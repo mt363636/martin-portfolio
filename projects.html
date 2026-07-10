@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Software development projects by Martin Terniak." />
+  <title>Projects | Martin Terniak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="cosmic-background" aria-hidden="true">
+  <div class="stars stars-small"></div>
+  <div class="stars stars-medium"></div>
+  <div class="stars stars-large"></div>
+  <div class="cosmic-orb cosmic-orb-one"></div>
+  <div class="cosmic-orb cosmic-orb-two"></div>
+</div>
+ <header class="header">
+  <nav class="navbar container" aria-label="Main navigation">
+
+    <a href="index.html#home" class="brand">
+      <img src="logo.svg" alt="" class="brand-mark">
+      <span>Martin Terniak</span>
+    </a>
+
+    <ul class="nav-links">
+      <li>
+        <a href="index.html#home" class="nav-link">Home</a>
+      </li>
+
+      <li>
+        <a href="index.html#about" class="nav-link">About</a>
+      </li>
+
+      <li>
+        <a href="index.html#experience" class="nav-link">Experience</a>
+      </li>
+
+      <li>
+        <a href="projects.html" class="nav-link active">Projects</a>
+      </li>
+
+      <li>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <button
+      class="theme-toggle"
+      id="theme-toggle"
+      type="button"
+      aria-label="Switch color theme"
+      aria-pressed="false"
+    >
+      <span class="theme-toggle-track">
+        <span class="theme-icon sun-icon">☀</span>
+        <span class="theme-icon moon-icon">✦</span>
+        <span class="theme-toggle-orb"></span>
+      </span>
+    </button>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+</header>
+
+  <main>
+    <section class="projects-hero section">
+      <div class="container reveal">
+        <p class="eyebrow">Project Archive</p>
+        <h1>Projects built to learn, solve, and improve.</h1>
+        <p>
+          A collection of full-stack, frontend, backend, and automation work.
+          Every available source-code link points directly to the real repository.
+        </p>
+      </div>
+    </section>
+
+    <section class="projects-page section">
+      <div class="container">
+        <div class="projects-grid archive-grid">
+          <article class="project-card reveal">
+            <div class="project-visual project-one"><div class="project-placeholder"><span>C# · ASP.NET Core</span><strong>PetShop</strong></div></div>
+            <div class="project-content">
+              <p class="project-type">Full-Stack Web Application</p>
+              <h2>PetShop Management Platform</h2>
+              <p>Catalog browsing, category filtering, animal details, comments, authentication, image uploads, and an admin dashboard.</p>
+              <div class="tags"><span>C#</span><span>ASP.NET Core</span><span>EF Core</span><span>SQL</span></div>
+              <div class="project-links"><a href="https://github.com/mt363636/PetShopProject" target="_blank" rel="noopener noreferrer">View GitHub ↗</a><span class="disabled-link">Live demo unavailable</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-visual project-two"><div class="project-placeholder"><span>JavaScript</span><strong>Food Delivery</strong></div></div>
+            <div class="project-content">
+              <p class="project-type">Frontend Application</p>
+              <h2>Food Delivery App</h2>
+              <p>An interactive food-ordering experience designed around simple browsing, selection, and customer-friendly flows.</p>
+              <div class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>UI</span></div>
+              <div class="project-links"><a href="https://github.com/mt363636/Food-Delievery-App" target="_blank" rel="noopener noreferrer">View GitHub ↗</a><span class="disabled-link">Live demo unavailable</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-visual project-three"><div class="project-placeholder"><span>Playwright · Node.js</span><strong>Automation</strong></div></div>
+            <div class="project-content">
+              <p class="project-type">QA Automation</p>
+              <h2>Automation Exercise</h2>
+              <p>An end-to-end Playwright test that fills a form, changes a field, takes a screenshot, submits, and verifies the result.</p>
+              <div class="tags"><span>Playwright</span><span>Node.js</span><span>JavaScript</span><span>Testing</span></div>
+              <div class="project-links"><a href="https://github.com/mt363636/Automation-Exercise" target="_blank" rel="noopener noreferrer">View GitHub ↗</a><span class="disabled-link">Repository project</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-visual project-four"><div class="project-placeholder"><span>C#</span><strong>Triangle App</strong></div></div>
+            <div class="project-content">
+              <p class="project-type">C# Application</p>
+              <h2>Triangle App</h2>
+              <p>A focused C# project demonstrating structured logic, validation, calculations, and clear application flow.</p>
+              <div class="tags"><span>C#</span><span>.NET</span><span>Logic</span></div>
+              <div class="project-links"><a href="https://github.com/mt363636/TriangleApp" target="_blank" rel="noopener noreferrer">View GitHub ↗</a><span class="disabled-link">Live demo unavailable</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-visual project-five"><div class="project-placeholder"><span>C#</span><strong>Boxes & Presents</strong></div></div>
+            <div class="project-content">
+              <p class="project-type">C# Fundamentals</p>
+              <h2>Boxes and Presents</h2>
+              <p>A programming exercise centered on data handling, object-oriented thinking, and practical problem solving.</p>
+              <div class="tags"><span>C#</span><span>OOP</span><span>Algorithms</span></div>
+              <div class="project-links"><a href="https://github.com/mt363636/BoxesAndPresentsProject" target="_blank" rel="noopener noreferrer">View GitHub ↗</a><span class="disabled-link">Live demo unavailable</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-visual project-six"><div class="project-placeholder"><span>Programming Logic</span><strong>Recursions</strong></div></div>
+            <div class="project-content">
+              <p class="project-type">Algorithm Practice</p>
+              <h2>Recursion Exercises</h2>
+              <p>A collection of exercises exploring recursive thinking, base cases, and step-by-step algorithm design.</p>
+              <div class="tags"><span>Recursion</span><span>Algorithms</span><span>Practice</span></div>
+              <div class="project-links"><a href="https://github.com/mt363636/recursions" target="_blank" rel="noopener noreferrer">View GitHub ↗</a><span class="disabled-link">Repository project</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <a href="index.html" class="brand footer-brand"><img src="logo.svg" alt="" class="brand-mark"><span>Martin Terniak</span></a>
+      <p>© <span id="year"></span> Martin Terniak.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/martin-terniak-32437826b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/mt363636" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
