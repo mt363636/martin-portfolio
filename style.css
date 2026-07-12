@@ -176,7 +176,7 @@ img{display:block;max-width:100%}
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.project-placeholder span {
+.project-placeholder:not(.code-window) > span {
   color: #6556c9;
   font-size: 0.72rem;
   font-weight: 800;
@@ -184,10 +184,9 @@ img{display:block;max-width:100%}
   letter-spacing: 0.08em;
 }
 
-.project-placeholder strong {
+.project-placeholder:not(.code-window) > strong {
   color: #25243a;
   font-size: 1.65rem;
-  line-height: 1.1;
   letter-spacing: -0.045em;
 }
 
@@ -284,6 +283,432 @@ body.cosmic-theme .project-card[data-link]::after {
     display: none;
   }
 }
+/* =========================
+   Interactive project cards
+   ========================= */
+
+.project-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  position: relative;
+  isolation: isolate;
+}
+
+.project-card[data-link] {
+  cursor: pointer;
+}
+
+.project-card[data-link]:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 5px;
+}
+
+/* Cursor spotlight */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      360px circle at var(--mouse-x) var(--mouse-y),
+      rgba(124, 108, 255, 0.14),
+      transparent 43%
+    );
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.24s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.cosmic-theme .project-card::before {
+  background:
+    radial-gradient(
+      380px circle at var(--mouse-x) var(--mouse-y),
+      rgba(150, 132, 255, 0.22),
+      transparent 45%
+    );
+}
+
+/* Repository hover label */
+.project-card[data-link]::after {
+  content: "View repository ↗";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 4;
+
+  padding: 7px 11px;
+  border-radius: 999px;
+
+  background: rgba(24, 24, 34, 0.9);
+  color: #fff;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  opacity: 0;
+  transform: translateY(-7px);
+
+  pointer-events: none;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.project-card[data-link]:hover::after,
+.project-card[data-link]:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.cosmic-theme .project-card[data-link]::after {
+  background: var(--primary);
+}
+
+/* =========================
+   Animated technology tags
+   ========================= */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tags span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background: var(--surface-soft);
+  color: var(--muted);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  transform: translateY(0);
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.project-card:hover .tags span {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.project-card:hover .tags span:nth-child(1) {
+  transition-delay: 0.02s;
+}
+
+.project-card:hover .tags span:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.project-card:hover .tags span:nth-child(3) {
+  transition-delay: 0.08s;
+}
+
+.project-card:hover .tags span:nth-child(4) {
+  transition-delay: 0.11s;
+}
+
+.project-card:hover .tags span:nth-child(5) {
+  transition-delay: 0.14s;
+}
+
+.project-card:hover .tags span:nth-child(6) {
+  transition-delay: 0.17s;
+}
+
+.project-card:hover .tags span:nth-child(7) {
+  transition-delay: 0.2s;
+}
+
+/* =========================
+   GitHub repository stats
+   ========================= */
+
+.github-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+
+  min-height: 28px;
+  margin-top: 18px;
+
+  color: var(--muted);
+  font-size: 0.76rem;
+
+  opacity: 0;
+  transform: translateY(5px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.github-stats.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.github-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.github-stat > span:first-child {
+  color: var(--primary);
+}
+
+.github-updated {
+  margin-left: auto;
+}
+
+.github-unavailable {
+  color: var(--muted);
+}
+
+/* =========================
+   Code-window project visual
+   ========================= */
+
+.code-window {
+  justify-content: space-between;
+  padding: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.code-window-bar {
+  display: grid;
+  grid-template-columns: 70px 1fr 70px;
+  align-items: center;
+
+  width: 100%;
+  min-height: 42px;
+  padding: 0 14px;
+
+  border-bottom: 1px solid rgba(45, 43, 70, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.window-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.window-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(45, 43, 70, 0.26);
+}
+
+.window-dots i:nth-child(2) {
+  opacity: 0.75;
+}
+
+.window-dots i:nth-child(3) {
+  opacity: 0.5;
+}
+
+.code-filename {
+  overflow: hidden;
+
+  color: #676579;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.code-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  width: 100%;
+  padding: 20px 22px;
+
+  color: #39374d;
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.code-body span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.code-body em {
+  color: #6757d8;
+  font-style: normal;
+}
+
+.code-body b {
+  color: #19856c;
+  font-weight: 600;
+}
+
+.code-indent {
+  padding-left: 18px;
+}
+
+.code-success {
+  color: #168568;
+}
+
+.project-window-title {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 100%;
+  padding: 0 22px 22px;
+}
+
+.project-window-title span {
+  color: #6556c9;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-window-title strong {
+  color: #25243a;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+
+/* Dark ChatRoom window */
+.project-chat .code-window {
+  background: rgba(12, 16, 36, 0.78);
+}
+
+.project-chat .code-window-bar {
+  background: rgba(8, 11, 28, 0.55);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.project-chat .code-filename {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.project-chat .window-dots i {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.project-chat .code-body {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.project-chat .code-body em,
+.project-chat .project-window-title span {
+  color: #b9b2ff;
+}
+
+.project-chat .code-body b,
+.project-chat .code-success {
+  color: #65e5be;
+}
+
+.project-chat .project-window-title strong {
+  color: #fff;
+}
+
+/* Mobile and touch devices */
+@media (hover: none) {
+  .project-card::before,
+  .project-card[data-link]::after {
+    display: none;
+  }
+
+  .project-card:hover .tags span {
+    color: var(--muted);
+    background: var(--surface-soft);
+    border-color: var(--border);
+    transform: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .github-updated {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .code-window-bar {
+    grid-template-columns: 55px 1fr 55px;
+  }
+
+  .code-body {
+    padding: 18px;
+    font-size: 0.63rem;
+  }
+
+  .project-window-title {
+    padding: 0 18px 20px;
+  }
+
+  .project-window-title strong {
+    font-size: 1.4rem;
+  }
+}
+
+/* Accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-placeholder,
+  .tags span,
+  .github-stats,
+  .project-card::before,
+  .project-card::after {
+    transition: none !important;
+  }
+
+  .project-card:hover,
+  .project-card:hover .project-placeholder,
+  .project-card:hover .tags span {
+    transform: none;
+  }
+}
+
 /* =========================================================
    CLEAN LIGHT / COSMIC THEME SYSTEM
    Keeps the original light theme as default.

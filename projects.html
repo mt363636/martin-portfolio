@@ -1,409 +1,408 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Software development projects by Martin Terniak." />
-  <title>Projects | Martin Terniak</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css" />
-</head>
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Software development projects by Martin Terniak." name="description"/>
+<title>Projects | Martin Terniak</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="style.css" rel="stylesheet">
+</link></head>
 <body>
-  <div class="cursor-glow" aria-hidden="true"></div>
-  <div class="cosmic-background" aria-hidden="true">
-  <div class="stars stars-small"></div>
-  <div class="stars stars-medium"></div>
-  <div class="stars stars-large"></div>
-  <div class="cosmic-orb cosmic-orb-one"></div>
-  <div class="cosmic-orb cosmic-orb-two"></div>
+<div aria-hidden="true" class="cursor-glow"></div>
+<div aria-hidden="true" class="cosmic-background">
+<div class="stars stars-small"></div>
+<div class="stars stars-medium"></div>
+<div class="stars stars-large"></div>
+<div class="cosmic-orb cosmic-orb-one"></div>
+<div class="cosmic-orb cosmic-orb-two"></div>
 </div>
- <header class="header">
-  <nav class="navbar container" aria-label="Main navigation">
-
-    <a href="index.html#home" class="brand">
-      <img src="logo.svg" alt="" class="brand-mark">
-      <span>Martin Terniak</span>
-    </a>
-
-    <ul class="nav-links" id="nav-links">
-      <li>
-        <a href="index.html#home" class="nav-link">Home</a>
-      </li>
-
-      <li>
-        <a href="index.html#about" class="nav-link">About</a>
-      </li>
-
-      <li>
-        <a href="index.html#experience" class="nav-link">Experience</a>
-      </li>
-
-      <li>
-        <a href="projects.html" class="nav-link active">Projects</a>
-      </li>
-
-      <li>
-        <a href="index.html#contact" class="nav-link">Contact</a>
-      </li>
-    </ul>
-
-    <button
-      class="theme-toggle"
-      id="theme-toggle"
-      type="button"
-      aria-label="Switch color theme"
-      aria-pressed="false"
-    >
-      <span class="theme-toggle-track">
-        <span class="theme-icon sun-icon">☀</span>
-        <span class="theme-icon moon-icon">✦</span>
-        <span class="theme-toggle-orb"></span>
-      </span>
-    </button>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-  </nav>
+<header class="header">
+<nav aria-label="Main navigation" class="navbar container">
+<a class="brand" href="index.html#home">
+<img alt="" class="brand-mark" src="logo.svg"/>
+<span>Martin Terniak</span>
+</a>
+<ul class="nav-links" id="nav-links">
+<li>
+<a class="nav-link" href="index.html#home">Home</a>
+</li>
+<li>
+<a class="nav-link" href="index.html#about">About</a>
+</li>
+<li>
+<a class="nav-link" href="index.html#experience">Experience</a>
+</li>
+<li>
+<a class="nav-link active" href="projects.html">Projects</a>
+</li>
+<li>
+<a class="nav-link" href="index.html#contact">Contact</a>
+</li>
+</ul>
+<button aria-label="Switch color theme" aria-pressed="false" class="theme-toggle" id="theme-toggle" type="button">
+<span class="theme-toggle-track">
+<span class="theme-icon sun-icon">☀</span>
+<span class="theme-icon moon-icon">✦</span>
+<span class="theme-toggle-orb"></span>
+</span>
+</button>
+<button aria-expanded="false" aria-label="Open navigation menu" class="menu-toggle" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
 </header>
-
-  <main>
-    <section class="projects-hero section">
-      <div class="container reveal">
-        <p class="eyebrow">Project Archive</p>
-        <h1>Projects built to learn, solve, and improve.</h1>
-        <p>
+<main>
+<section class="projects-hero section">
+<div class="container reveal">
+<p class="eyebrow">Project Archive</p>
+<h1>Projects built to learn, solve, and improve.</h1>
+<p>
           A collection of full-stack, frontend, backend, and automation work.
           Every available source-code link points directly to the real repository.
         </p>
-      </div>
-    </section>
-
-    <section class="projects-page section">
-      <div class="container">
-        <div class="projects-grid archive-grid">
-          <article
-  class="project-card reveal"
-  data-link="https://github.com/mt363636/PetShopProject"
->
-  <div class="project-visual project-one">
-    <div class="project-placeholder">
-      <span>C# · ASP.NET Core</span>
-      <strong>PetShop</strong>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <p class="project-type">Full-Stack Web Application</p>
-    <h2>PetShop Management Platform</h2>
-
-    <p>
-      Catalog browsing, category filtering, animal details, comments,
-      authentication, image uploads, and an admin dashboard.
-    </p>
-
-    <div class="tags">
-      <span>C#</span>
-      <span>ASP.NET Core</span>
-      <span>EF Core</span>
-      <span>SQL</span>
-    </div>
-
-    <div class="project-links">
-      <a
-        href="https://github.com/mt363636/PetShopProject"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub ↗
-      </a>
-
-      <span class="disabled-link">Live demo unavailable</span>
-    </div>
-  </div>
+</div>
+</section>
+<section class="projects-page section">
+<div class="container">
+<div class="projects-grid archive-grid">
+<article class="project-card reveal" data-link="https://github.com/mt363636/PetShopProject" data-repo="mt363636/PetShopProject">
+<div class="project-visual project-one">
+<div class="project-placeholder code-window">
+<div class="code-window-bar">
+<span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>
+<span class="code-filename">AnimalController.cs</span>
+</div>
+<div aria-hidden="true" class="code-body">
+<span><em>public</em> IActionResult Catalog()</span><span>{</span><span class="code-indent"><em>return</em> View(repository.GetAnimals());</span><span>}</span>
+</div>
+<div class="project-window-title">
+<span>C# · ASP.NET Core</span>
+<strong>PetShop</strong>
+</div>
+</div>
+</div>
+<div class="project-content">
+<p class="project-type">Full-Stack Web Application</p>
+<h2>PetShop Management Platform</h2>
+<p>Catalog browsing, category filtering, animal details, comments, authentication, image uploads, and an admin dashboard.</p>
+<div class="tags">
+<span>C#</span><span>ASP.NET Core</span><span>EF Core</span><span>SQL</span>
+</div>
+<div aria-label="GitHub repository statistics" class="github-stats">
+<span class="github-stat">
+<span aria-hidden="true">★</span>
+<span data-stat="stars">—</span>
+<span class="stat-label">stars</span>
+</span>
+<span class="github-stat">
+<span aria-hidden="true">⑂</span>
+<span data-stat="forks">—</span>
+<span class="stat-label">forks</span>
+</span>
+<span class="github-stat github-updated">
+        Updated <span data-stat="updated">—</span>
+</span>
+</div>
+<div class="project-links">
+<a href="https://github.com/mt363636/PetShopProject" rel="noopener noreferrer" target="_blank">View GitHub ↗</a>
+<span class="disabled-link">Live demo unavailable</span>
+</div>
+</div>
 </article>
 
-<article
-  class="project-card reveal"
-  data-link="https://github.com/RoeezLevi/chatRoom"
->
-  <div class="project-visual project-chat">
-    <div class="project-placeholder">
-      <span>React · Node.js · Socket.IO</span>
-      <strong>ChatRoom</strong>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <p class="project-type">Full-Stack Course Final Project</p>
-    <h2>Real-Time Chat Application</h2>
-
-    <p>
-      A collaborative final project developed with a course partner, featuring
-      user authentication, real-time private messaging, online user status,
-      saved conversations, and an integrated Tic-Tac-Toe game.
-    </p>
-
-    <div class="tags">
-      <span>React</span>
-      <span>Node.js</span>
-      <span>Express</span>
-      <span>MongoDB</span>
-      <span>Socket.IO</span>
-      <span>Zustand</span>
-      <span>JWT</span>
-    </div>
-
-    <div class="project-links">
-      <a
-        href="https://github.com/RoeezLevi/chatRoom"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub ↗
-      </a>
-
-      <span class="disabled-link">Collaborative project</span>
-    </div>
-  </div>
+<article class="project-card reveal" data-link="https://github.com/RoeezLevi/chatRoom" data-repo="RoeezLevi/chatRoom">
+<div class="project-visual project-chat">
+<div class="project-placeholder code-window">
+<div class="code-window-bar">
+<span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>
+<span class="code-filename">socket.js</span>
+</div>
+<div aria-hidden="true" class="code-body">
+<span>socket.on(<b>"newMessage"</b>, message =&gt; {</span><span class="code-indent">store.addMessage(message);</span><span>});</span><span class="code-success">● Socket connected</span>
+</div>
+<div class="project-window-title">
+<span>React · Node.js · Socket.IO</span>
+<strong>ChatRoom</strong>
+</div>
+</div>
+</div>
+<div class="project-content">
+<p class="project-type">Full-Stack Course Final Project</p>
+<h2>Real-Time Chat Application</h2>
+<p>A collaborative final project developed with a course partner, featuring user authentication, real-time private messaging, online user status, saved conversations, and an integrated Tic-Tac-Toe game.</p>
+<div class="tags">
+<span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Socket.IO</span><span>Zustand</span><span>JWT</span>
+</div>
+<div aria-label="GitHub repository statistics" class="github-stats">
+<span class="github-stat">
+<span aria-hidden="true">★</span>
+<span data-stat="stars">—</span>
+<span class="stat-label">stars</span>
+</span>
+<span class="github-stat">
+<span aria-hidden="true">⑂</span>
+<span data-stat="forks">—</span>
+<span class="stat-label">forks</span>
+</span>
+<span class="github-stat github-updated">
+        Updated <span data-stat="updated">—</span>
+</span>
+</div>
+<div class="project-links">
+<a href="https://github.com/RoeezLevi/chatRoom" rel="noopener noreferrer" target="_blank">View GitHub ↗</a>
+<span class="disabled-link">Collaborative project</span>
+</div>
+</div>
 </article>
 
-<article
-  class="project-card reveal"
-  data-link="https://github.com/mt363636/Food-Delievery-App"
->
-  <div class="project-visual project-two">
-    <div class="project-placeholder">
-      <span>JavaScript</span>
-      <strong>Food Delivery</strong>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <p class="project-type">Frontend Application</p>
-    <h2>Food Delivery App</h2>
-
-    <p>
-      An interactive food-ordering experience designed around simple browsing,
-      selection, and customer-friendly flows.
-    </p>
-
-    <div class="tags">
-      <span>JavaScript</span>
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>UI</span>
-    </div>
-
-    <div class="project-links">
-      <a
-        href="https://github.com/mt363636/Food-Delievery-App"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub ↗
-      </a>
-
-      <span class="disabled-link">Live demo unavailable</span>
-    </div>
-  </div>
+<article class="project-card reveal" data-link="https://github.com/mt363636/Food-Delievery-App" data-repo="mt363636/Food-Delievery-App">
+<div class="project-visual project-two">
+<div class="project-placeholder code-window">
+<div class="code-window-bar">
+<span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>
+<span class="code-filename">menu.js</span>
+</div>
+<div aria-hidden="true" class="code-body">
+<span><em>const</em> order = cart.map(item =&gt; ({</span><span class="code-indent">name: item.name,</span><span class="code-indent">quantity: item.quantity</span><span>}));</span>
+</div>
+<div class="project-window-title">
+<span>JavaScript · HTML · CSS</span>
+<strong>Food Delivery</strong>
+</div>
+</div>
+</div>
+<div class="project-content">
+<p class="project-type">Frontend Application</p>
+<h2>Food Delivery App</h2>
+<p>An interactive food-ordering experience designed around simple browsing, selection, and customer-friendly flows.</p>
+<div class="tags">
+<span>JavaScript</span><span>HTML</span><span>CSS</span><span>UI</span>
+</div>
+<div aria-label="GitHub repository statistics" class="github-stats">
+<span class="github-stat">
+<span aria-hidden="true">★</span>
+<span data-stat="stars">—</span>
+<span class="stat-label">stars</span>
+</span>
+<span class="github-stat">
+<span aria-hidden="true">⑂</span>
+<span data-stat="forks">—</span>
+<span class="stat-label">forks</span>
+</span>
+<span class="github-stat github-updated">
+        Updated <span data-stat="updated">—</span>
+</span>
+</div>
+<div class="project-links">
+<a href="https://github.com/mt363636/Food-Delievery-App" rel="noopener noreferrer" target="_blank">View GitHub ↗</a>
+<span class="disabled-link">Live demo unavailable</span>
+</div>
+</div>
 </article>
 
-<article
-  class="project-card reveal"
-  data-link="https://github.com/mt363636/Automation-Exercise"
->
-  <div class="project-visual project-three">
-    <div class="project-placeholder">
-      <span>Playwright · Node.js</span>
-      <strong>Automation</strong>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <p class="project-type">QA Automation</p>
-    <h2>Automation Exercise</h2>
-
-    <p>
-      An end-to-end Playwright test that fills a form, changes a field, takes a
-      screenshot, submits, and verifies the result.
-    </p>
-
-    <div class="tags">
-      <span>Playwright</span>
-      <span>Node.js</span>
-      <span>JavaScript</span>
-      <span>Testing</span>
-    </div>
-
-    <div class="project-links">
-      <a
-        href="https://github.com/mt363636/Automation-Exercise"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub ↗
-      </a>
-
-      <span class="disabled-link">Repository project</span>
-    </div>
-  </div>
+<article class="project-card reveal" data-link="https://github.com/mt363636/Automation-Exercise" data-repo="mt363636/Automation-Exercise">
+<div class="project-visual project-three">
+<div class="project-placeholder code-window">
+<div class="code-window-bar">
+<span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>
+<span class="code-filename">form.spec.js</span>
+</div>
+<div aria-hidden="true" class="code-body">
+<span><em>await</em> page.fill(<b>"#name"</b>, user.name);</span><span><em>await</em> page.click(<b>"#submit"</b>);</span><span><em>await</em> expect(result).toBeVisible();</span><span class="code-success">✓ Test passed</span>
+</div>
+<div class="project-window-title">
+<span>Playwright · Node.js</span>
+<strong>Automation</strong>
+</div>
+</div>
+</div>
+<div class="project-content">
+<p class="project-type">QA Automation</p>
+<h2>Automation Exercise</h2>
+<p>An end-to-end Playwright test that fills a form, changes a field, takes a screenshot, submits, and verifies the result.</p>
+<div class="tags">
+<span>Playwright</span><span>Node.js</span><span>JavaScript</span><span>Testing</span>
+</div>
+<div aria-label="GitHub repository statistics" class="github-stats">
+<span class="github-stat">
+<span aria-hidden="true">★</span>
+<span data-stat="stars">—</span>
+<span class="stat-label">stars</span>
+</span>
+<span class="github-stat">
+<span aria-hidden="true">⑂</span>
+<span data-stat="forks">—</span>
+<span class="stat-label">forks</span>
+</span>
+<span class="github-stat github-updated">
+        Updated <span data-stat="updated">—</span>
+</span>
+</div>
+<div class="project-links">
+<a href="https://github.com/mt363636/Automation-Exercise" rel="noopener noreferrer" target="_blank">View GitHub ↗</a>
+<span class="disabled-link">Repository project</span>
+</div>
+</div>
 </article>
 
-<article
-  class="project-card reveal"
-  data-link="https://github.com/mt363636/TriangleApp"
->
-  <div class="project-visual project-four">
-    <div class="project-placeholder">
-      <span>C#</span>
-      <strong>Triangle App</strong>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <p class="project-type">C# Application</p>
-    <h2>Triangle App</h2>
-
-    <p>
-      A focused C# project demonstrating structured logic, validation,
-      calculations, and clear application flow.
-    </p>
-
-    <div class="tags">
-      <span>C#</span>
-      <span>.NET</span>
-      <span>Logic</span>
-    </div>
-
-    <div class="project-links">
-      <a
-        href="https://github.com/mt363636/TriangleApp"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub ↗
-      </a>
-
-      <span class="disabled-link">Live demo unavailable</span>
-    </div>
-  </div>
+<article class="project-card reveal" data-link="https://github.com/mt363636/TriangleApp" data-repo="mt363636/TriangleApp">
+<div class="project-visual project-four">
+<div class="project-placeholder code-window">
+<div class="code-window-bar">
+<span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>
+<span class="code-filename">Triangle.cs</span>
+</div>
+<div aria-hidden="true" class="code-body">
+<span><em>if</em> (a + b &gt; c)</span><span class="code-indent">return TriangleType.Valid;</span><span><em>return</em> TriangleType.Invalid;</span>
+</div>
+<div class="project-window-title">
+<span>C# · .NET</span>
+<strong>Triangle App</strong>
+</div>
+</div>
+</div>
+<div class="project-content">
+<p class="project-type">C# Application</p>
+<h2>Triangle App</h2>
+<p>A focused C# project demonstrating structured logic, validation, calculations, and clear application flow.</p>
+<div class="tags">
+<span>C#</span><span>.NET</span><span>Logic</span>
+</div>
+<div aria-label="GitHub repository statistics" class="github-stats">
+<span class="github-stat">
+<span aria-hidden="true">★</span>
+<span data-stat="stars">—</span>
+<span class="stat-label">stars</span>
+</span>
+<span class="github-stat">
+<span aria-hidden="true">⑂</span>
+<span data-stat="forks">—</span>
+<span class="stat-label">forks</span>
+</span>
+<span class="github-stat github-updated">
+        Updated <span data-stat="updated">—</span>
+</span>
+</div>
+<div class="project-links">
+<a href="https://github.com/mt363636/TriangleApp" rel="noopener noreferrer" target="_blank">View GitHub ↗</a>
+<span class="disabled-link">Live demo unavailable</span>
+</div>
+</div>
 </article>
 
-<article
-  class="project-card reveal"
-  data-link="https://github.com/mt363636/BoxesAndPresentsProject"
->
-  <div class="project-visual project-five">
-    <div class="project-placeholder">
-      <span>C#</span>
-      <strong>Boxes &amp; Presents</strong>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <p class="project-type">C# Fundamentals</p>
-    <h2>Boxes and Presents</h2>
-
-    <p>
-      A programming exercise centered on data handling, object-oriented
-      thinking, and practical problem solving.
-    </p>
-
-    <div class="tags">
-      <span>C#</span>
-      <span>OOP</span>
-      <span>Algorithms</span>
-    </div>
-
-    <div class="project-links">
-      <a
-        href="https://github.com/mt363636/BoxesAndPresentsProject"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub ↗
-      </a>
-
-      <span class="disabled-link">Live demo unavailable</span>
-    </div>
-  </div>
+<article class="project-card reveal" data-link="https://github.com/mt363636/BoxesAndPresentsProject" data-repo="mt363636/BoxesAndPresentsProject">
+<div class="project-visual project-five">
+<div class="project-placeholder code-window">
+<div class="code-window-bar">
+<span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>
+<span class="code-filename">Box.cs</span>
+</div>
+<div aria-hidden="true" class="code-body">
+<span><em>class</em> Box</span><span>{</span><span class="code-indent"><em>public</em> List&lt;Present&gt; Presents;</span><span>}</span>
+</div>
+<div class="project-window-title">
+<span>C# · OOP</span>
+<strong>Boxes &amp; Presents</strong>
+</div>
+</div>
+</div>
+<div class="project-content">
+<p class="project-type">C# Fundamentals</p>
+<h2>Boxes and Presents</h2>
+<p>A programming exercise centered on data handling, object-oriented thinking, and practical problem solving.</p>
+<div class="tags">
+<span>C#</span><span>OOP</span><span>Algorithms</span>
+</div>
+<div aria-label="GitHub repository statistics" class="github-stats">
+<span class="github-stat">
+<span aria-hidden="true">★</span>
+<span data-stat="stars">—</span>
+<span class="stat-label">stars</span>
+</span>
+<span class="github-stat">
+<span aria-hidden="true">⑂</span>
+<span data-stat="forks">—</span>
+<span class="stat-label">forks</span>
+</span>
+<span class="github-stat github-updated">
+        Updated <span data-stat="updated">—</span>
+</span>
+</div>
+<div class="project-links">
+<a href="https://github.com/mt363636/BoxesAndPresentsProject" rel="noopener noreferrer" target="_blank">View GitHub ↗</a>
+<span class="disabled-link">Live demo unavailable</span>
+</div>
+</div>
 </article>
 
-<article
-  class="project-card reveal"
-  data-link="https://github.com/mt363636/recursions"
->
-  <div class="project-visual project-six">
-    <div class="project-placeholder">
-      <span>Programming Logic</span>
-      <strong>Recursions</strong>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <p class="project-type">Algorithm Practice</p>
-    <h2>Recursion Exercises</h2>
-
-    <p>
-      A collection of exercises exploring recursive thinking, base cases, and
-      step-by-step algorithm design.
-    </p>
-
-    <div class="tags">
-      <span>Recursion</span>
-      <span>Algorithms</span>
-      <span>Practice</span>
-    </div>
-
-    <div class="project-links">
-      <a
-        href="https://github.com/mt363636/recursions"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub ↗
-      </a>
-
-      <span class="disabled-link">Repository project</span>
-    </div>
-  </div>
+<article class="project-card reveal" data-link="https://github.com/mt363636/recursions" data-repo="mt363636/recursions">
+<div class="project-visual project-six">
+<div class="project-placeholder code-window">
+<div class="code-window-bar">
+<span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>
+<span class="code-filename">Recursion.cs</span>
+</div>
+<div aria-hidden="true" class="code-body">
+<span><em>if</em> (n &lt;= 1) return 1;</span><span><em>return</em> n * Factorial(n - 1);</span><span class="code-success">✓ Base case reached</span>
+</div>
+<div class="project-window-title">
+<span>Programming Logic</span>
+<strong>Recursions</strong>
+</div>
+</div>
+</div>
+<div class="project-content">
+<p class="project-type">Algorithm Practice</p>
+<h2>Recursion Exercises</h2>
+<p>A collection of exercises exploring recursive thinking, base cases, and step-by-step algorithm design.</p>
+<div class="tags">
+<span>Recursion</span><span>Algorithms</span><span>Practice</span>
+</div>
+<div aria-label="GitHub repository statistics" class="github-stats">
+<span class="github-stat">
+<span aria-hidden="true">★</span>
+<span data-stat="stars">—</span>
+<span class="stat-label">stars</span>
+</span>
+<span class="github-stat">
+<span aria-hidden="true">⑂</span>
+<span data-stat="forks">—</span>
+<span class="stat-label">forks</span>
+</span>
+<span class="github-stat github-updated">
+        Updated <span data-stat="updated">—</span>
+</span>
+</div>
+<div class="project-links">
+<a href="https://github.com/mt363636/recursions" rel="noopener noreferrer" target="_blank">View GitHub ↗</a>
+<span class="disabled-link">Repository project</span>
+</div>
+</div>
 </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-content">
-      <a href="index.html" class="brand footer-brand"><img src="logo.svg" alt="" class="brand-mark"><span>Martin Terniak</span></a>
-      <p>© <span id="year"></span> Martin Terniak.</p>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/in/martin-terniak-32437826b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/mt363636" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </div>
-  </footer>
-  <button
-  class="back-to-top"
-  id="back-to-top"
-  type="button"
-  aria-label="Back to top"
->
-  <span class="back-to-top-arrow">↑</span>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-content">
+<a class="brand footer-brand" href="index.html"><img alt="" class="brand-mark" src="logo.svg"/><span>Martin Terniak</span></a>
+<p>© <span id="year"></span> Martin Terniak.</p>
+<div class="footer-social">
+<a href="https://www.linkedin.com/in/martin-terniak-32437826b" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a href="https://github.com/mt363636" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</div>
+</footer>
+<button aria-label="Back to top" class="back-to-top" id="back-to-top" type="button">
+<span class="back-to-top-arrow">↑</span>
 </button>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

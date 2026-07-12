@@ -164,20 +164,234 @@ if (backToTopButton) {
   updateBackToTopVisibility();
 }
 
-document.querySelectorAll(".project-card[data-link]").forEach((card) => {
+/* =========================
+   Clickable project cards
+   ========================= */
+
+const projectCards = document.querySelectorAll(
+  ".project-card[data-link]"
+);
+
+projectCards.forEach((card) => {
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "link");
+
   card.addEventListener("click", (event) => {
     if (event.target.closest("a")) return;
 
-    window.open(card.dataset.link, "_blank", "noopener,noreferrer");
+    window.open(
+      card.dataset.link,
+      "_blank",
+      "noopener,noreferrer"
+    );
   });
 
   card.addEventListener("keydown", (event) => {
     if (event.key !== "Enter" && event.key !== " ") return;
 
     event.preventDefault();
-    window.open(card.dataset.link, "_blank", "noopener,noreferrer");
+
+    window.open(
+      card.dataset.link,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  });
+});
+
+/* =========================
+   Project cursor spotlight
+   ========================= */
+
+const supportsHover = window.matchMedia(
+  "(hover: hover) and (pointer: fine)"
+).matches;
+
+if (supportsHover) {
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      const bounds = card.getBoundingClientRect();
+
+      card.style.setProperty(
+        "--mouse-x",
+        `${event.clientX - bounds.left}px`
+      );
+
+      card.style.setProperty(
+        "--mouse-y",
+        `${event.clientY - bounds.top}px`
+      );
+    });
+
+    card.addEventListener("pointerleave", () => {
+      card.style.setProperty("--mouse-x", "50%");
+      card.style.setProperty("--mouse-y", "50%");
+    });
+  });
+}
+
+/* =========================
+   Live GitHub repository data
+   ========================= */
+
+const GITHUB_CACHE_DURATION = 60 * 60 * 1000;
+
+const formatGitHubDate = (dateString) => {
+  const date = new Date(dateString);
+
+  if (Number.isNaN(date.getTime())) {
+    return "recently";
+  }
+
+  const elapsedMilliseconds = date.getTime() - Date.now();
+  const elapsedDays = Math.round(
+    elapsedMilliseconds / (1000 * 60 * 60 * 24)
+  );
+
+  const relativeFormatter = new Intl.RelativeTimeFormat("en", {
+    numeric: "auto",
   });
 
-  card.setAttribute("tabindex", "0");
-  card.setAttribute("role", "link");
-});
+  if (Math.abs(elapsedDays) < 1) {
+    return "today";
+  }
+
+  if (Math.abs(elapsedDays) < 30) {
+    return relativeFormatter.format(elapsedDays, "day");
+  }
+
+  const elapsedMonths = Math.round(elapsedDays / 30);
+
+  if (Math.abs(elapsedMonths) < 12) {
+    return relativeFormatter.format(elapsedMonths, "month");
+  }
+
+  const elapsedYears = Math.round(elapsedDays / 365);
+
+  return relativeFormatter.format(elapsedYears, "year");
+};
+
+const getCachedRepository = (repository) => {
+  try {
+    const cacheKey = `github-repo:${repository}`;
+    const cachedValue = localStorage.getItem(cacheKey);
+
+    if (!cachedValue) {
+      return null;
+    }
+
+    const cachedRepository = JSON.parse(cachedValue);
+
+    const cacheExpired =
+      !cachedRepository.savedAt ||
+      Date.now() - cachedRepository.savedAt >
+        GITHUB_CACHE_DURATION;
+
+    if (cacheExpired) {
+      localStorage.removeItem(cacheKey);
+      return null;
+    }
+
+    return cachedRepository.data;
+  } catch (error) {
+    console.warn("Could not read GitHub cache:", error);
+    return null;
+  }
+};
+
+const cacheRepository = (repository, data) => {
+  try {
+    localStorage.setItem(
+      `github-repo:${repository}`,
+      JSON.stringify({
+        savedAt: Date.now(),
+        data,
+      })
+    );
+  } catch (error) {
+    console.warn("Could not save GitHub cache:", error);
+  }
+};
+
+const updateRepositoryStats = (card, repositoryData) => {
+  const stars = card.querySelector('[data-stat="stars"]');
+  const forks = card.querySelector('[data-stat="forks"]');
+  const updated = card.querySelector('[data-stat="updated"]');
+  const statsContainer = card.querySelector(".github-stats");
+
+  if (stars) {
+    stars.textContent =
+      repositoryData.stargazers_count ?? 0;
+  }
+
+  if (forks) {
+    forks.textContent =
+      repositoryData.forks_count ?? 0;
+  }
+
+  if (updated) {
+    updated.textContent = formatGitHubDate(
+      repositoryData.pushed_at
+    );
+  }
+
+  statsContainer?.classList.add("loaded");
+};
+
+const loadGitHubRepository = async (card) => {
+  const repository = card.dataset.repo;
+  const statsContainer = card.querySelector(".github-stats");
+
+  if (!repository || !statsContainer) {
+    return;
+  }
+
+  const cachedRepository = getCachedRepository(repository);
+
+  if (cachedRepository) {
+    updateRepositoryStats(card, cachedRepository);
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${repository}`,
+      {
+        headers: {
+          Accept: "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `GitHub API returned status ${response.status}`
+      );
+    }
+
+    const repositoryData = await response.json();
+
+    cacheRepository(repository, repositoryData);
+    updateRepositoryStats(card, repositoryData);
+  } catch (error) {
+    console.warn(
+      `Could not load GitHub repository ${repository}:`,
+      error
+    );
+
+    statsContainer.innerHTML = `
+      <span class="github-stat github-unavailable">
+        Public GitHub repository
+      </span>
+    `;
+
+    statsContainer.classList.add("loaded");
+  }
+};
+
+document
+  .querySelectorAll(".project-card[data-repo]")
+  .forEach((card) => {
+    loadGitHubRepository(card);
+  });
