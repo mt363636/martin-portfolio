@@ -233,7 +233,57 @@ img{display:block;max-width:100%}
 @media(max-width:760px){.section{padding:84px 0}.menu-toggle{display:flex}.nav-links{position:fixed;inset:78px 0 auto;height:calc(100vh - 78px);padding:28px 20px;background:rgba(247,248,252,.98);flex-direction:column;align-items:stretch;transform:translateX(100%);transition:.3s}.nav-links.open{transform:translateX(0)}.nav-link{justify-content:center;padding:14px}.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}.menu-toggle.active span:nth-child(2){opacity:0}.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hero{padding-top:135px}.hero h1{font-size:clamp(2.8rem,13vw,4.6rem)}.hero-visual{min-height:460px}.portrait-frame{width:min(86%,360px)}.card-code{left:-8px}.card-stat{right:-8px}.projects-grid,.form-row{grid-template-columns:1fr}.heading-row{align-items:flex-start;flex-direction:column}.experience-card{padding:26px}.footer-content{flex-direction:column;text-align:center}.projects-hero{padding-top:150px}.brand>span{font-size:.92rem}}
 @media(max-width:480px){.container{width:min(calc(100% - 28px),var(--container))}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%}.hero-visual{min-height:420px}.floating-card{transform:scale(.84)}.card-code{left:-24px}.card-stat{right:-20px}.contact-form{padding:24px 18px}.experience-company{align-items:flex-start}.company-logo{width:62px;height:62px}.project-visual{min-height:225px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+.project-card[data-link] {
+  position: relative;
+  cursor: pointer;
+}
 
+.project-card[data-link]:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 5px;
+}
+
+.project-card[data-link]::after {
+  content: "Click to view repository ↗";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+
+  padding: 7px 11px;
+  border-radius: 999px;
+
+  background: rgba(24, 24, 34, 0.9);
+  color: #fff;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  opacity: 0;
+  transform: translateY(-7px);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+
+  pointer-events: none;
+}
+
+.project-card[data-link]:hover::after,
+.project-card[data-link]:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.cosmic-theme .project-card[data-link]::after {
+  background: var(--primary);
+}
+
+@media (hover: none) {
+  .project-card[data-link]::after {
+    display: none;
+  }
+}
 /* =========================================================
    CLEAN LIGHT / COSMIC THEME SYSTEM
    Keeps the original light theme as default.

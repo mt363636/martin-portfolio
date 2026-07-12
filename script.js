@@ -163,3 +163,21 @@ if (backToTopButton) {
 
   updateBackToTopVisibility();
 }
+
+document.querySelectorAll(".project-card[data-link]").forEach((card) => {
+  card.addEventListener("click", (event) => {
+    if (event.target.closest("a")) return;
+
+    window.open(card.dataset.link, "_blank", "noopener,noreferrer");
+  });
+
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+
+    event.preventDefault();
+    window.open(card.dataset.link, "_blank", "noopener,noreferrer");
+  });
+
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "link");
+});
