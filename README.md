@@ -1,24 +1,22 @@
-# Martin Terniak Portfolio
+# Martin Terniak — Evolved Portfolio
 
-A responsive personal portfolio built with HTML, CSS, and JavaScript.
+A standalone, redesigned version of Martin's portfolio. Built with semantic HTML, modern CSS and dependency-free JavaScript.
 
-## Pages
-- `index.html` — home, about, 3M experience, featured projects, and contact
-- `projects.html` — dedicated project archive with direct GitHub links
+## Preview
+
+Open `index.html` directly, or run a local server from this folder:
+
+```bash
+npx serve .
+```
 
 ## Included
-- Personal SVG logo
-- GitHub profile image in the hero
-- Responsive navigation and mobile menu
-- Smooth scrolling
-- Scroll reveal effects
-- LinkedIn and GitHub links
-- Real project repository links
-- Responsive project grids
-- Accessible reduced-motion support
 
-## Notes
-The contact form is currently a frontend demonstration. Connect it to Formspree,
-EmailJS, Netlify Forms, or a custom API to receive messages.
+- Recruiter-focused landing page and project storytelling
+- Responsive terminal-inspired visual system
+- Accessible navigation, focus states and reduced-motion support
+- Lightweight typing animation and scroll reveals
+- Dedicated seven-project archive
+- Direct email, LinkedIn and GitHub calls to action
 
-Live-demo buttons are intentionally not linked where no verified deployment was found.
+No build step, framework, API key or contact-form service is required.
