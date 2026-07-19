@@ -28,6 +28,35 @@ document.addEventListener("keydown", (event) => {
 const header=document.querySelector('.site-header');addEventListener('scroll',()=>header?.classList.toggle('scrolled',scrollY>20),{passive:true});
 document.querySelector('#year').textContent=new Date().getFullYear();
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const pageLoader = document.querySelector("#page-loader");
+const loaderAlreadyShown = sessionStorage.getItem(
+  "portfolio-loader-shown"
+);
+
+const hidePageLoader = () => {
+  pageLoader?.classList.add("hidden");
+
+  window.setTimeout(() => {
+    pageLoader?.remove();
+  }, 600);
+};
+
+if (loaderAlreadyShown || reduced) {
+  hidePageLoader();
+} else {
+  sessionStorage.setItem("portfolio-loader-shown", "true");
+
+  window.addEventListener(
+    "load",
+    () => {
+      window.setTimeout(hidePageLoader, 1050);
+    },
+    { once: true }
+  );
+
+  // Safety fallback if an external resource takes too long.
+  window.setTimeout(hidePageLoader, 2500);
+}
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const target=document.querySelector('#type-target');if(target&&!reduced){const words=['full-stack products','reliable APIs','clear experiences','useful software'];let word=0,char=words[0].length,erase=true;const tick=()=>{const text=words[word];target.textContent='"'+text.slice(0,char)+'"';if(erase){char--;if(char<0){erase=false;word=(word+1)%words.length;setTimeout(tick,350);return}}else{char++;if(char>words[word].length){erase=true;setTimeout(tick,1500);return}}setTimeout(tick,erase?45:75)};setTimeout(tick,1200)}
 const finePointer=matchMedia('(hover: hover) and (pointer: fine)').matches;
