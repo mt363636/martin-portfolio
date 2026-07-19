@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Martin Terniak — full-stack developer building practical, people-focused software with React, Node.js, ASP.NET Core and modern web technologies.">
   <meta name="theme-color" content="#080b12">
-  <title>Martin Terniak — Full-Stack Developer</title>
+  <title>Martin Terniak | Full-Stack Developer</title>
   <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +70,7 @@
           <article class="project reveal"><div class="project-index">02</div><div class="project-main"><p class="project-kind">ASP.NET Core MVC</p><h3>PetShop Management Platform</h3><p>Catalog, comments, authentication, image uploads and administrator workflows backed by EF Core and SQL.</p><ul><li>C#</li><li>ASP.NET Core</li><li>EF Core</li><li>SQL</li></ul><a href="https://github.com/mt363636/PetShopProject" target="_blank" rel="noreferrer">View repository <span>↗</span></a></div><div class="code-card" aria-hidden="true"><small>AnimalController.cs</small><code><b>public</b> IActionResult Catalog()<br>{<br>&nbsp;&nbsp;<i>return</i> View(repository<br>&nbsp;&nbsp;&nbsp;&nbsp;.GetAnimals());<br>}</code></div></article>
           <article class="project reveal"><div class="project-index">03</div><div class="project-main"><p class="project-kind">Frontend application</p><h3>Food Delivery Experience</h3><p>An interactive ordering flow designed around simple browsing, clear selection and a customer-friendly interface.</p><ul><li>JavaScript</li><li>HTML</li><li>CSS</li><li>UI design</li></ul><a href="https://github.com/mt363636/Food-Delievery-App" target="_blank" rel="noreferrer">View repository <span>↗</span></a></div><div class="code-card violet" aria-hidden="true"><small>cart.js</small><code><b>const</b> order = cart<br>&nbsp;&nbsp;.map(item => ({<br>&nbsp;&nbsp;&nbsp;&nbsp;...item,<br>&nbsp;&nbsp;&nbsp;&nbsp;ready: <i>true</i><br>&nbsp;&nbsp;}));</code></div></article>
         </div>
-        <div class="archive-link reveal"><a href="projects.html">Explore all seven projects <span>→</span></a></div>
+        <div class="archive-link reveal"><a href="projects.html">Explore more projects <span>→</span></a></div>
       </div>
     </section>
 
@@ -82,6 +82,14 @@
     <section class="contact-section" id="contact"><div class="shell contact-inner reveal"><p class="kicker">Have an opportunity or an idea?</p><h2>Let’s build something <em>worth using.</em></h2><a class="button light" href="mailto:mterniak@gmail.com">Start a conversation <span>↗</span></a><div class="contact-links"><a href="mailto:mterniak@gmail.com">Email</a><a href="https://www.linkedin.com/in/martin-terniak-32437826b" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mt363636" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></section>
   </main>
   <footer><div class="shell"><a class="brand" href="#top"><img src="logo.svg" alt=""><span>MT<span class="accent">.</span></span></a><p>Designed & built by Martin · <span id="year"></span></p><a href="#top">Back to top ↑</a></div></footer>
+  <button
+  class="back-to-top"
+  id="back-to-top"
+  type="button"
+  aria-label="Back to top"
+>
+  ↑
+</button>
   <script src="script.js" defer></script>
 </body>
 </html>

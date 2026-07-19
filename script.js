@@ -1,6 +1,30 @@
-const menu=document.querySelector('.menu-button'),nav=document.querySelector('.nav-list');
-menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);document.body.classList.toggle('menu-open',open)});
-nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu?.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}));
+ const menu = document.querySelector(".menu-button");
+const nav = document.querySelector(".nav-list");
+
+const closeMenu = () => {
+  nav?.classList.remove("open");
+  menu?.classList.remove("active");
+  menu?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+};
+
+menu?.addEventListener("click", () => {
+  const open = nav?.classList.toggle("open");
+
+  menu.classList.toggle("active", open);
+  menu.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("menu-open", open);
+});
+
+nav?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+});
 const header=document.querySelector('.site-header');addEventListener('scroll',()=>header?.classList.toggle('scrolled',scrollY>20),{passive:true});
 document.querySelector('#year').textContent=new Date().getFullYear();
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -13,3 +37,22 @@ if(finePointer&&!reduced){
   stage?.addEventListener('pointermove',event=>{const box=stage.getBoundingClientRect(),x=(event.clientX-box.left)/box.width-.5,y=(event.clientY-box.top)/box.height-.5;stage.style.setProperty('--rx',`${-y*3}deg`);stage.style.setProperty('--ry',`${x*4}deg`)});
   stage?.addEventListener('pointerleave',()=>{stage.style.setProperty('--rx','0deg');stage.style.setProperty('--ry','0deg')});
 }
+
+const backToTop = document.querySelector("#back-to-top");
+
+const updateBackToTop = () => {
+  backToTop?.classList.toggle("visible", window.scrollY > 500);
+};
+
+window.addEventListener("scroll", updateBackToTop, {
+  passive: true
+});
+
+backToTop?.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: reduced ? "auto" : "smooth"
+  });
+});
+
+updateBackToTop();
