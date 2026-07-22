@@ -29,9 +29,27 @@ const header=document.querySelector('.site-header');addEventListener('scroll',()
 document.querySelector('#year').textContent=new Date().getFullYear();
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const pageLoader = document.querySelector("#page-loader");
-const loaderAlreadyShown = sessionStorage.getItem(
-  "portfolio-loader-shown"
+const loaderProgress = document.querySelector(".loader-progress");
+const loaderPercentage = document.querySelector(
+  ".loader-percentage"
 );
+
+let progress = 0;
+let progressTimer;
+let loaderFinished = false;
+
+const updateLoaderProgress = (value) => {
+  progress = Math.min(Math.round(value), 100);
+
+  if (loaderPercentage) {
+    loaderPercentage.textContent = `${progress}%`;
+  }
+
+  if (loaderProgress) {
+    loaderProgress.style.transform =
+      `scaleX(${progress / 100})`;
+  }
+};
 
 const hidePageLoader = () => {
   pageLoader?.classList.add("hidden");
@@ -41,21 +59,78 @@ const hidePageLoader = () => {
   }, 600);
 };
 
+const finishLoader = () => {
+  if (loaderFinished) return;
+
+  loaderFinished = true;
+  window.clearInterval(progressTimer);
+
+  const finishTimer = window.setInterval(() => {
+    progress += Math.max(
+      1,
+      Math.ceil((100 - progress) / 4)
+    );
+
+    if (progress >= 100) {
+      progress = 100;
+      updateLoaderProgress(progress);
+      window.clearInterval(finishTimer);
+
+      window.setTimeout(hidePageLoader, 350);
+      return;
+    }
+
+    updateLoaderProgress(progress);
+  }, 35);
+};
+
+let loaderAlreadyShown = false;
+
+try {
+  loaderAlreadyShown =
+    sessionStorage.getItem("portfolio-loader-shown") === "true";
+} catch {
+  loaderAlreadyShown = false;
+}
+
 if (loaderAlreadyShown || reduced) {
+  updateLoaderProgress(100);
   hidePageLoader();
 } else {
-  sessionStorage.setItem("portfolio-loader-shown", "true");
+  try {
+    sessionStorage.setItem(
+      "portfolio-loader-shown",
+      "true"
+    );
+  } catch {
+    // Continue without session storage.
+  }
 
-  window.addEventListener(
-    "load",
-    () => {
-      window.setTimeout(hidePageLoader, 1050);
-    },
-    { once: true }
-  );
+  updateLoaderProgress(0);
 
-  // Safety fallback if an external resource takes too long.
-  window.setTimeout(hidePageLoader, 2500);
+  progressTimer = window.setInterval(() => {
+    if (progress >= 88) {
+      window.clearInterval(progressTimer);
+      return;
+    }
+
+    const remaining = 88 - progress;
+
+    const increase = Math.max(
+      1,
+      Math.ceil(
+        Math.random() * Math.min(7, remaining)
+      )
+    );
+
+    updateLoaderProgress(progress + increase);
+  }, 70);
+
+  window.addEventListener("load", finishLoader, {
+    once: true
+  });
+
+  window.setTimeout(finishLoader, 3000);
 }
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const target=document.querySelector('#type-target');if(target&&!reduced){const words=['full-stack products','reliable APIs','clear experiences','useful software'];let word=0,char=words[0].length,erase=true;const tick=()=>{const text=words[word];target.textContent='"'+text.slice(0,char)+'"';if(erase){char--;if(char<0){erase=false;word=(word+1)%words.length;setTimeout(tick,350);return}}else{char++;if(char>words[word].length){erase=true;setTimeout(tick,1500);return}}setTimeout(tick,erase?45:75)};setTimeout(tick,1200)}

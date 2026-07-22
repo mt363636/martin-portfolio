@@ -234,9 +234,9 @@
   inset: 0;
   background: var(--accent);
   box-shadow: 0 0 18px rgba(168, 255, 53, 0.7);
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: loaderProgress 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.12s ease-out;
 }
 
 .loader-content > p {
@@ -249,23 +249,7 @@
   animation: loaderReady 0.25s 0.78s ease forwards;
 }
 
-@keyframes loaderProgress {
-  0% {
-    transform: scaleX(0);
-  }
 
-  35% {
-    transform: scaleX(0.32);
-  }
-
-  65% {
-    transform: scaleX(0.7);
-  }
-
-  100% {
-    transform: scaleX(1);
-  }
-}
 
 @keyframes loaderLogoReveal {
   from {
@@ -310,7 +294,7 @@
   }
 
   .loader-progress {
-    transform: scaleX(1);
+    transition: none;
   }
 
   .loader-content > p {
